@@ -29,12 +29,12 @@ func _physics_process(delta):
 	position += velocity * actual_move_speed * delta;
 	
 	look_at(get_global_mouse_position())
-	rotation_degrees = rotation_degrees + 90;
+	rotation_degrees = rotation_degrees + 270;
 
 func _on_fire_timer_timeout():
 	# fire gun
 	var bullet = bullet_template.instantiate();
 	#bullet.velocity = velocity.normalized() + Vector2.UP.rotated(rotation);
 	bullet.position = position;
-	bullet.rotation_degrees = rotation_degrees;
+	bullet.rotation_degrees = rotation_degrees - 180;
 	Bullets.add_child(bullet);

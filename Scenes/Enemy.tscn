@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dcdy0keaioo6l"]
+
+[ext_resource type="Script" uid="uid://dl2bvnnd3qsug" path="res://Scripts/enemy.gd" id="1_m1htj"]
+[ext_resource type="Script" uid="uid://dle7vih57ik3l" path="res://Scripts/enemy_draw.gd" id="2_wovta"]
+
+[node name="Enemy" type="Area2D" unique_id=408429015]
+script = ExtResource("1_m1htj")
+
+[node name="Draw" type="Node2D" parent="." unique_id=432656438]
+script = ExtResource("2_wovta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=691920890]

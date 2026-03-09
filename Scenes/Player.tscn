@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://rk784n2apwl3"]
 
 [ext_resource type="Script" uid="uid://cv65oa44ptn5g" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://b6bu1t0ims0rp" path="res://Assets/Sprite/Player.svg" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://di35fy2lav3ly" path="res://Scripts/player_draw.gd" id="2_kyqiw"]
 
 [node name="Player" type="Area2D" unique_id=1671592110]
 script = ExtResource("1_kyqiw")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1548737808]
+[node name="Draw" type="Node2D" parent="." unique_id=465989890]
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_rpqav")
+script = ExtResource("2_kyqiw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1064097303]
 polygon = PackedVector2Array(0, -32, 31, 30, -31, 30)
