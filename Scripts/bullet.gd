@@ -7,7 +7,7 @@ extends Area2D
 var move_speed = 500;
 
 func _ready():
-	velocity = Vector2.UP.rotated(rotation);
+	velocity = Vector2.RIGHT.rotated(rotation);
 	position += velocity * 40
 
 func _physics_process(delta):

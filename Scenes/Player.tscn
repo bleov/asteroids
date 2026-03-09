@@ -1,19 +1,27 @@
 [gd_scene format=3 uid="uid://rk784n2apwl3"]
 
 [ext_resource type="Script" uid="uid://cv65oa44ptn5g" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Script" uid="uid://di35fy2lav3ly" path="res://Scripts/player_draw.gd" id="2_kyqiw"]
 
 [node name="Player" type="Area2D" unique_id=1671592110]
 script = ExtResource("1_kyqiw")
 metadata/_edit_group_ = true
 
-[node name="Draw" type="Node2D" parent="." unique_id=465989890]
-scale = Vector2(0.6, 0.6)
-script = ExtResource("2_kyqiw")
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1599739778]
+rotation = -1.5707964
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(7.430936e-07, -17, 28, -28, 0, 28, -27.999998, -28.000002)
+
+[node name="Stroke" type="Line2D" parent="." unique_id=1833759456]
+rotation = -1.5707964
+points = PackedVector2Array(7.430936e-07, -17, 25, -25, 0, 25, -25, -25)
+closed = true
+width = 5.0
+joint_mode = 2
+antialiased = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1064097303]
-rotation = 3.1415927
-polygon = PackedVector2Array(0, -32, 31, 30, -31, 30)
+rotation = 1.5707964
+polygon = PackedVector2Array(-1.2239188e-06, -28, 29.000002, 26.999998, 1.1802075e-06, 27, -28.999998, 27.000002)
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1253680283]
 wait_time = 0.3

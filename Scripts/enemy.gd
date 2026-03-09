@@ -9,6 +9,7 @@ const HEALTH_SCALE_FACTOR = 5;
 
 @export var level = 1;
 @export var health = -1;
+@export var max_health = -1;
 
 func _ready():
 	var size = BASE_SCALE + ((level - 1) * SCALE_FACTOR);
@@ -19,8 +20,13 @@ func _ready():
 	health =  ((level - 1) * HEALTH_SCALE_FACTOR);
 	if (health == 0):
 		health = BASE_HEALTH;
+	max_health = health;
 
+func _process(_delta):
+	if (health <= 0):
+		queue_free();
 
 func _on_area_entered(area):
 	if ("type" in area && area.type == "bullet"):
-		queue_free();
+		area.queue_free();
+		health -= 1;
