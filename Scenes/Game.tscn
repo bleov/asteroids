@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b2tb5tl3ji8xt"]
+
+[ext_resource type="PackedScene" uid="uid://rk784n2apwl3" path="res://Scenes/Player.tscn" id="1_iukft"]
+[ext_resource type="Script" uid="uid://bybie1i78oqju" path="res://Scripts/bounds.gd" id="1_j5yw3"]
+[ext_resource type="Script" uid="uid://dsfqp3pavh8p4" path="res://Scripts/camera.gd" id="2_gl6un"]
+
+[node name="Game" type="Node2D" unique_id=2047278801]
+
+[node name="Bounds" type="Control" parent="." unique_id=1409193031]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4500.0
+offset_top = -4500.0
+offset_right = 4500.0
+offset_bottom = 4500.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j5yw3")
+
+[node name="Bullets" type="Node" parent="." unique_id=1412283500]
+
+[node name="Player" parent="." unique_id=1671592110 instance=ExtResource("1_iukft")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1944335260]
+script = ExtResource("2_gl6un")
