@@ -12,6 +12,7 @@ scale = Vector2(0.6, 0.6)
 script = ExtResource("2_kyqiw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1064097303]
+rotation = 3.1415927
 polygon = PackedVector2Array(0, -32, 31, 30, -31, 30)
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1253680283]

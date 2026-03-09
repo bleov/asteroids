@@ -13,5 +13,5 @@ func _draw():
 	
 	draw_polygon(points, fill_colors);
 	draw_polyline(points, OUTLINE_COLOR, 5, true);
-	draw_line(Vector2(-SIZE, -SIZE), Vector2(SIZE, -SIZE), OUTLINE_COLOR, 5, true);
+	draw_line(Vector2(-SIZE - 1, -SIZE), Vector2(SIZE + 1, -SIZE), OUTLINE_COLOR, 5, true);
 	queue_redraw();

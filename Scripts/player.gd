@@ -6,6 +6,7 @@ extends Area2D
 @onready var Bounds = game.get_node("Bounds");
 @onready var Bullets = game.get_node("Bullets");
 
+@export var type = "player";
 @export var move_speed = 7;
 @export var velocity = Vector2.ZERO;
 

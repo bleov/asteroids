@@ -5,8 +5,8 @@ const COLOR = Color(255, 255, 255, 0.2)
 
 @onready var rect = get_rect();
 
-func is_inside_bounds(position: Vector2):
-	return rect.has_point(position);
+func is_inside_bounds(pos: Vector2):
+	return rect.has_point(pos);
 
 func _draw():
 	for x in range(0, size.x, BOX_SIZE):

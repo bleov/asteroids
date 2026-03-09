@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var Bounds = get_parent().get_parent().get_node("Bounds");
 
+@export var type = "bullet";
 @export var velocity = Vector2.ZERO;
 var move_speed = 500;
 

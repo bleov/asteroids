@@ -31,7 +31,15 @@ script = ExtResource("2_gl6un")
 
 [node name="Enemy" parent="." unique_id=408429015 instance=ExtResource("4_kldst")]
 position = Vector2(219, -129)
+level = 1
+health = -1
 
 [node name="Enemy2" parent="." unique_id=1200176905 instance=ExtResource("4_kldst")]
 position = Vector2(-268, -201)
-size = 60
+level = 2
+health = -1
+
+[node name="Enemy3" parent="." unique_id=1620443575 instance=ExtResource("4_kldst")]
+position = Vector2(57, -311)
+level = 3
+health = -1
