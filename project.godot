@@ -18,10 +18,16 @@ boot_splash/show_image=false
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=3840
+window/size/viewport_height=2160
+window/stretch/mode="canvas_items"
 mouse_cursor/stretch/aspect="keep"
 mouse_cursor/stretch/mode="disabled"
+
+[gui]
+
+theme/default_theme_scale=2.0
+theme/custom="uid://dqnawhsdtqm00"
 
 [input]
 
@@ -77,4 +83,6 @@ fast={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

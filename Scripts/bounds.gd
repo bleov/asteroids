@@ -1,15 +1,21 @@
 extends Control
 
 const BOX_SIZE = 100;
-const COLOR = Color(255, 255, 255, 0.2)
+const COLOR = Color(255, 255, 255, 1)
+const WIDTH = 5;
 
 @onready var rect = get_rect();
+@onready var player = get_parent().get_node("Player");
 
 func is_inside_bounds(pos: Vector2):
 	return rect.has_point(pos);
 
+func _process(_delta):
+	material.set("shader_parameter/offset", player.position);
+
 func _draw():
-	for x in range(0, size.x, BOX_SIZE):
-		draw_line(Vector2(x, 0), Vector2(x, size.y), COLOR, 2, false);
-	for y in range(0, size.y, BOX_SIZE):
-		draw_line(Vector2(0, y), Vector2(size.x, y), COLOR, 2, false);
+	#for x in range(0, size.x, BOX_SIZE):
+		#draw_line(Vector2(x, 0), Vector2(x, size.y), COLOR, WIDTH, false);
+	#for y in range(0, size.y, BOX_SIZE):
+		#draw_line(Vector2(0, y), Vector2(size.x, y), COLOR, WIDTH, false);
+	draw_rect(Rect2(Vector2.ZERO, size), Color(0, 0, 0, 0), true);
