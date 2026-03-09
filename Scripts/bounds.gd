@@ -10,6 +10,18 @@ const WIDTH = 5;
 func is_inside_bounds(pos: Vector2):
 	return rect.has_point(pos);
 
+func get_return_velocity(pos: Vector2):
+	var result = Vector2.ZERO
+	if pos.x > size.x / 2:
+		result.x = -(pos.x - size.x / 2)
+	elif pos.x < -(size.x / 2):
+		result.x = -(pos.x + size.x / 2)
+	if pos.y > size.y / 2:
+		result.y = -(pos.y - size.y / 2)
+	elif pos.y < -(size.y / 2):
+		result.y = -(pos.y + size.y / 2)
+	return result
+
 func _process(_delta):
 	material.set("shader_parameter/offset", player.position);
 

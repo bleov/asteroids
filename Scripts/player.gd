@@ -7,8 +7,10 @@ extends Area2D
 @onready var Bullets = game.get_node("Bullets");
 
 @export var type = "player";
-@export var move_speed = 7;
+@export var move_speed = 10;
 @export var velocity = Vector2.ZERO;
+
+const TERMINAL_VELOCITY = 1000.0;
 
 func _ready():
 	pass;
@@ -27,6 +29,13 @@ func _physics_process(delta):
 	var move = input_vector;
 	velocity += move;
 	velocity *= pow(0.3, delta);
+	
+	# out of bounds
+	var return_velocity = Bounds.get_return_velocity(position) * 0.01;
+	velocity += return_velocity;
+	
+	velocity = velocity.clampf(-TERMINAL_VELOCITY, TERMINAL_VELOCITY);
+	
 	position += velocity * actual_move_speed * delta;
 	
 	look_at(get_global_mouse_position())
