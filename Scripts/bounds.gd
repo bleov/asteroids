@@ -20,7 +20,7 @@ func get_return_velocity(pos: Vector2):
 		result.y = -(pos.y - size.y / 2)
 	elif pos.y < -(size.y / 2):
 		result.y = -(pos.y + size.y / 2)
-	return result
+	return result * 0.01
 
 func _process(_delta):
 	material.set("shader_parameter/offset", player.position);

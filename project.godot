@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 
+[autoload]
+
+Enum="*uid://b11smxwgb8ak"
+Util="*uid://b6r42roa2q74m"
+
 [display]
 
 window/size/viewport_width=3840
@@ -23,6 +28,10 @@ window/size/viewport_height=2160
 window/stretch/mode="canvas_items"
 mouse_cursor/stretch/aspect="keep"
 mouse_cursor/stretch/mode="disabled"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 
 [gui]
 
@@ -81,8 +90,6 @@ fast={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

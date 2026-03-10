@@ -6,7 +6,7 @@ extends Area2D
 @onready var Bounds = game.get_node("Bounds");
 @onready var Bullets = game.get_node("Bullets");
 
-@export var type = "player";
+@export var area_type = Enum.AreaType.Player;
 @export var move_speed = 10;
 @export var velocity = Vector2.ZERO;
 
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	velocity *= pow(0.3, delta);
 	
 	# out of bounds
-	var return_velocity = Bounds.get_return_velocity(position) * 0.01;
+	var return_velocity = Bounds.get_return_velocity(position);
 	velocity += return_velocity;
 	
 	velocity = velocity.clampf(-TERMINAL_VELOCITY, TERMINAL_VELOCITY);
@@ -43,6 +43,7 @@ func _physics_process(delta):
 
 func _on_fire_timer_timeout():
 	# fire gun
+	if (Input.is_action_pressed("fire")): return
 	var bullet = bullet_template.instantiate();
 	#bullet.velocity = velocity.normalized() + Vector2.UP.rotated(rotation);
 	bullet.position = position;

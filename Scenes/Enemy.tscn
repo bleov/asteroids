@@ -5,8 +5,6 @@
 
 [node name="Enemy" type="Area2D" unique_id=408429015]
 script = ExtResource("1_m1htj")
-level = null
-health = null
 
 [node name="Draw" type="Node2D" parent="." unique_id=432656438]
 script = ExtResource("2_wovta")

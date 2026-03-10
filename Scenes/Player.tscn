@@ -21,7 +21,7 @@ antialiased = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1064097303]
 rotation = 1.5707964
-polygon = PackedVector2Array(-1.2239188e-06, -28, 29.000002, 26.999998, 1.1802075e-06, 27, -28.999998, 27.000002)
+polygon = PackedVector2Array(-1.2239188e-06, -28, 27.000002, 26.999998, 1.1802075e-06, 27, -26.999998, 27.000002)
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1253680283]
 wait_time = 0.3
