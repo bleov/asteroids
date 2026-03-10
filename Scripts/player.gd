@@ -1,17 +1,21 @@
 extends Area2D
 
-@onready var bullet_template = preload("res://Scenes/Bullet.tscn");
+var bullet_template = preload("res://Scenes/Bullet.tscn");
 
 @onready var game = get_parent();
 @onready var Bounds = game.get_node("Bounds");
 @onready var Bullets = game.get_node("Bullets");
+
 @onready var DashSound = $DashSound;
 @onready var Dash2Sound = $Dash2Sound;
+@onready var HurtSound = $HurtSound;
 
 @export var area_type: Enum.AreaType = Enum.AreaType.Player;
 @export var move_speed: int = 10;
 @export var velocity: Vector2 = Vector2.ZERO;
 @export var state: Enum.PlayerState = Enum.PlayerState.Normal;
+@export var health: int = 5;
+@export var max_health: int = 5;
 
 var dodge_cooldown = false;
 var dodge_velocity = Vector2.ZERO;
@@ -74,3 +78,11 @@ func _on_fire_timer_timeout():
 	bullet.position = position;
 	bullet.rotation_degrees = rotation_degrees;
 	Bullets.add_child(bullet);
+
+func update_health(amount: int):
+	health = clamp(health + amount, 0, max_health);
+	game.update_health_display();
+
+func damage(amount: int):
+	update_health(-amount);
+	HurtSound.play();

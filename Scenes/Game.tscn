@@ -79,6 +79,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_bf53h")
+metadata/_edit_lock_ = true
 
 [node name="Time" type="Label" parent="UI/HUD" unique_id=335190379]
 layout_mode = 1
@@ -92,6 +93,16 @@ offset_bottom = 171.0
 grow_horizontal = 2
 text = "0:00"
 label_settings = SubResource("LabelSettings_bf53h")
+
+[node name="Hearts" type="GridContainer" parent="UI/HUD" unique_id=460817241]
+layout_mode = 1
+offset_left = 95.0
+offset_top = 90.0
+offset_right = 1398.0
+offset_bottom = 249.0
+theme = ExtResource("2_7lihs")
+columns = 13
+metadata/_edit_group_ = true
 
 [node name="Minimap" type="Panel" parent="UI/HUD" unique_id=1902765855]
 layout_mode = 1
@@ -115,7 +126,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
-metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="UI/LevelUp" unique_id=130395700]
 layout_mode = 1
@@ -207,6 +217,7 @@ offset_bottom = 3000.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j5yw3")
+metadata/_edit_lock_ = true
 
 [node name="BoundsGradient" type="Control" parent="." unique_id=1674610837]
 material = SubResource("ShaderMaterial_7lihs")
@@ -241,4 +252,9 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1671592110 instance=ExtResource("1_iukft")]
 
+[node name="HurtSound" parent="Player" index="7" unique_id=2036965458]
+volume_db = -2.737
+
 [connection signal="timeout" from="Timers/Second" to="." method="_on_second_timeout"]
+
+[editable path="Player"]

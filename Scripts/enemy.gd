@@ -31,7 +31,7 @@ var move_speed = 10;
 var starting_velocity = 5;
 
 func _ready():
-	health = level;
+	health = ceil(level * 1.5);
 	max_health = health;
 	
 	var size = BASE_SCALE + ((level - 1) * SCALE_FACTOR);
@@ -70,6 +70,7 @@ func _physics_process(delta):
 				enemy.position = position;
 				enemy.is_child = true;
 				Enemies.add_child(enemy);
+		return;
 	
 	velocity *= pow(0.9, delta);
 	
@@ -93,6 +94,7 @@ func _on_area_entered(area):
 			if (health > 1):
 				HitSound.play();
 	if (area.area_type == Enum.AreaType.Player):
+		area.damage(1);
 		var normal: Vector2 = (position - area.position).normalized();
 		normal *= (velocity - area.velocity).dot(normal);
 		var bounce = 2;

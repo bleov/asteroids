@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bfbh0ismm4gar"]
+
+[node name="HeartIndicator" type="Control" unique_id=1087560823]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/index = 0
+
+[node name="Outline" type="Line2D" parent="." unique_id=371507748]
+scale = Vector2(2.7142856, 2.7142856)
+points = PackedVector2Array(0, 10, -13, -5, -6, -11, 0, -5, 6, -11, 13, -5)
+closed = true
+width = 3.0
+default_color = Color(0.8627451, 0.19607843, 0, 1)
+antialiased = true
+
+[node name="Fill" type="Polygon2D" parent="." unique_id=947429315]
+scale = Vector2(2.7142856, 2.7142856)
+color = Color(0.8627451, 0.19607843, 0, 1)
+antialiased = true
+polygon = PackedVector2Array(0, 10, -13, -5, -6, -11, 0, -5, 6, -11, 13, -5, 0, 10)
