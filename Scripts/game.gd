@@ -19,6 +19,7 @@ func spawn_enemy(type: Enum.EnemyType, level: int, position: Vector2):
 	enemy.type = type;
 	enemy.position = position;
 	Enemies.add_child(enemy);
+	return enemy;
 
 func spawn_wave(wave: int):
 	var enemy_count = BASE_ENEMIES_PER_WAVE
@@ -35,3 +36,7 @@ func _on_second_timeout():
 	
 	if (time % 30 == 0):
 		spawn_wave(time / 30 + 1);
+
+func _process(_delta):
+	if (Input.is_action_just_pressed("debug_spawn_giant")):
+		spawn_enemy(Enum.EnemyType.Asteroid, 7, get_local_mouse_position())

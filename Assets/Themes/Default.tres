@@ -1,5 +1,14 @@
 [gd_resource type="Theme" format=3 uid="uid://dqnawhsdtqm00"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjduq"]
+bg_color = Color(0.06469653, 0.064696535, 0.06469648, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu514"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 5
@@ -10,4 +19,5 @@ border_color = Color(1, 1, 1, 1)
 border_blend = true
 
 [resource]
+Button/styles/normal = SubResource("StyleBoxFlat_qjduq")
 Panel/styles/panel = SubResource("StyleBoxFlat_mu514")

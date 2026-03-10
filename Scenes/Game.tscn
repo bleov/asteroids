@@ -37,7 +37,7 @@ shader_parameter/mediumStarSlow = 6.0
 shader_parameter/smallStarSlow = 8.0
 shader_parameter/smallStarAmount = 0.001
 shader_parameter/mediumStarAmount = 0.01
-shader_parameter/bigStarAmount = 0.02
+shader_parameter/bigStarAmount = 0.0
 
 [sub_resource type="Gradient" id="Gradient_b2bpf"]
 offsets = PackedFloat32Array(0, 0.9427711, 1)
@@ -159,13 +159,30 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 29.0
 offset_top = -854.0
+offset_right = -29.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
 [node name="Button" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=1338058981]
 layout_mode = 2
+theme = ExtResource("2_7lihs")
+text = "Projectile Speed
+Bullets fly faster
+0/3"
+
+[node name="Button2" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=1097456054]
+layout_mode = 2
+theme = ExtResource("2_7lihs")
+text = "Projectile Speed
+Bullets fly faster
+0/3"
+
+[node name="Button3" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=1197238464]
+layout_mode = 2
+theme = ExtResource("2_7lihs")
 text = "Projectile Speed
 Bullets fly faster
 0/3"

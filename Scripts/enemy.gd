@@ -93,5 +93,10 @@ func _on_area_entered(area):
 			if (health > 1):
 				HitSound.play();
 	if (area.area_type == Enum.AreaType.Player):
-		velocity += area.velocity;
-		area.velocity = -area.velocity / 2;
+		var normal: Vector2 = (position - area.position).normalized();
+		normal *= (velocity - area.velocity).dot(normal);
+		var bounce = 2;
+		var giveToPlayer = pow(0.8, level + 2);
+		print(normal.length() * bounce);
+		velocity -= normal * giveToPlayer * bounce;
+		area.velocity += normal * (1 - giveToPlayer) * bounce + normal.normalized() * 10;
