@@ -9,7 +9,6 @@
 [ext_resource type="FontFile" uid="uid://cf6jrlnrlmlwc" path="res://Assets/Fonts/CourierPrime-Regular.ttf" id="3_bf53h"]
 [ext_resource type="Script" uid="uid://d20kak10kcij4" path="res://Scripts/minimap.gd" id="3_fgofq"]
 [ext_resource type="FontFile" uid="uid://ctge2soedoydp" path="res://Assets/Fonts/CourierPrime-Bold.ttf" id="4_2irst"]
-[ext_resource type="PackedScene" uid="uid://dcdy0keaioo6l" path="res://Scenes/Enemy.tscn" id="4_kldst"]
 
 [sub_resource type="Gradient" id="Gradient_2irst"]
 offsets = PackedFloat32Array(0, 0.7108434, 1)
@@ -97,7 +96,6 @@ text = "0:00"
 label_settings = SubResource("LabelSettings_bf53h")
 
 [node name="Minimap" type="Panel" parent="UI/HUD" unique_id=1902765855]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -218,29 +216,6 @@ metadata/_edit_lock_ = true
 [node name="Bullets" type="Node" parent="." unique_id=1412283500]
 
 [node name="Enemies" type="Node" parent="." unique_id=1422559407]
-
-[node name="Enemy" parent="Enemies" unique_id=408429015 instance=ExtResource("4_kldst")]
-position = Vector2(219, -129)
-
-[node name="Enemy2" parent="Enemies" unique_id=1200176905 instance=ExtResource("4_kldst")]
-position = Vector2(-268, -201)
-level = 2
-
-[node name="Enemy3" parent="Enemies" unique_id=1620443575 instance=ExtResource("4_kldst")]
-position = Vector2(57, -311)
-level = 3
-
-[node name="Enemy4" parent="Enemies" unique_id=664845952 instance=ExtResource("4_kldst")]
-position = Vector2(-531, -615)
-level = 3
-
-[node name="Enemy5" parent="Enemies" unique_id=1710138305 instance=ExtResource("4_kldst")]
-position = Vector2(858, -709)
-level = 3
-
-[node name="Enemy6" parent="Enemies" unique_id=1540666381 instance=ExtResource("4_kldst")]
-position = Vector2(999, -168)
-level = 6
 
 [node name="Player" parent="." unique_id=1671592110 instance=ExtResource("1_iukft")]
 

@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://rk784n2apwl3"]
 
 [ext_resource type="Script" uid="uid://cv65oa44ptn5g" path="res://Scripts/player.gd" id="1_kyqiw"]
+[ext_resource type="AudioStream" uid="uid://mugyh8atr8oy" path="res://Assets/Sounds/dash.wav" id="2_5ixxa"]
+[ext_resource type="AudioStream" uid="uid://rvxcje7lpy34" path="res://Assets/Sounds/dash2.wav" id="3_nn08x"]
+[ext_resource type="AudioStream" uid="uid://bfq6ydy1xdtu3" path="res://Assets/Sounds/levelup.ogg" id="4_52ee3"]
+[ext_resource type="AudioStream" uid="uid://ca7bimnf1yao1" path="res://Assets/Sounds/hurt.wav" id="5_bhhdu"]
 
 [node name="Player" type="Area2D" unique_id=1671592110]
 script = ExtResource("1_kyqiw")
@@ -24,7 +28,23 @@ rotation = 1.5707964
 polygon = PackedVector2Array(-1.2239188e-06, -28, 27.000002, 26.999998, 1.1802075e-06, 27, -26.999998, 27.000002)
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1253680283]
-wait_time = 0.3
+wait_time = 0.28
 autostart = true
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="." unique_id=2107986662]
+stream = ExtResource("2_5ixxa")
+bus = &"SFX"
+
+[node name="Dash2Sound" type="AudioStreamPlayer2D" parent="." unique_id=1201054619]
+stream = ExtResource("3_nn08x")
+bus = &"SFX"
+
+[node name="LevelUpSound" type="AudioStreamPlayer2D" parent="." unique_id=228012890]
+stream = ExtResource("4_52ee3")
+bus = &"SFX"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=2036965458]
+stream = ExtResource("5_bhhdu")
+bus = &"SFX"
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

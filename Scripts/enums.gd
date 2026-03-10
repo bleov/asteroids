@@ -11,3 +11,8 @@ enum AreaType {
 	Player,
 	Enemy
 }
+
+enum PlayerState {
+	Normal,
+	Dodge
+}

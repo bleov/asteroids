@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dl2bvnnd3qsug" path="res://Scripts/enemy.gd" id="1_m1htj"]
 [ext_resource type="Script" uid="uid://dle7vih57ik3l" path="res://Scripts/enemy_draw.gd" id="2_wovta"]
+[ext_resource type="AudioStream" uid="uid://wmxae4wus855" path="res://Assets/Sounds/kill.wav" id="3_kpr8r"]
+[ext_resource type="AudioStream" uid="uid://dw7k6m5uctyqt" path="res://Assets/Sounds/hit.wav" id="4_1exfc"]
 
 [node name="Enemy" type="Area2D" unique_id=408429015]
 script = ExtResource("1_m1htj")
@@ -10,5 +12,16 @@ script = ExtResource("1_m1htj")
 script = ExtResource("2_wovta")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=691920890]
+disabled = true
+
+[node name="KillSound" type="AudioStreamPlayer2D" parent="." unique_id=506056798]
+stream = ExtResource("3_kpr8r")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="." unique_id=678828542]
+stream = ExtResource("4_1exfc")
+volume_db = -11.404
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
