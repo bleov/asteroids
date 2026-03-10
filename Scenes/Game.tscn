@@ -1,12 +1,33 @@
 [gd_scene format=3 uid="uid://b2tb5tl3ji8xt"]
 
+[ext_resource type="Script" uid="uid://omhb38qkqffr" path="res://Scripts/game.gd" id="1_bf53h"]
 [ext_resource type="PackedScene" uid="uid://rk784n2apwl3" path="res://Scenes/Player.tscn" id="1_iukft"]
 [ext_resource type="Script" uid="uid://bybie1i78oqju" path="res://Scripts/bounds.gd" id="1_j5yw3"]
 [ext_resource type="Theme" uid="uid://dqnawhsdtqm00" path="res://Assets/Themes/Default.tres" id="2_7lihs"]
 [ext_resource type="Shader" uid="uid://bqjrdndg2c3yy" path="res://Shaders/Background.gdshader" id="2_b2bpf"]
 [ext_resource type="Script" uid="uid://dsfqp3pavh8p4" path="res://Scripts/camera.gd" id="2_gl6un"]
+[ext_resource type="FontFile" uid="uid://cf6jrlnrlmlwc" path="res://Assets/Fonts/CourierPrime-Regular.ttf" id="3_bf53h"]
 [ext_resource type="Script" uid="uid://d20kak10kcij4" path="res://Scripts/minimap.gd" id="3_fgofq"]
+[ext_resource type="FontFile" uid="uid://ctge2soedoydp" path="res://Assets/Fonts/CourierPrime-Bold.ttf" id="4_2irst"]
 [ext_resource type="PackedScene" uid="uid://dcdy0keaioo6l" path="res://Scenes/Enemy.tscn" id="4_kldst"]
+
+[sub_resource type="Gradient" id="Gradient_2irst"]
+offsets = PackedFloat32Array(0, 0.7108434, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.64705884)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bf53h"]
+gradient = SubResource("Gradient_2irst")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bf53h"]
+font = ExtResource("4_2irst")
+font_size = 120
+shadow_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_71axn"]
+font = ExtResource("3_bf53h")
+font_size = 80
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7lihs"]
 shader = ExtResource("2_b2bpf")
@@ -32,22 +53,51 @@ fill = 2
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Game" type="Node2D" unique_id=2047278801]
+script = ExtResource("1_bf53h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1944335260]
 zoom = Vector2(1.25, 1.25)
 limit_enabled = false
 script = ExtResource("2_gl6un")
 
+[node name="Timers" type="Node" parent="." unique_id=1979913018]
+
+[node name="Second" type="Timer" parent="Timers" unique_id=986326752]
+autostart = true
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=1888736919]
 
-[node name="Container" type="Control" parent="UI" unique_id=1170368936]
+[node name="HUD" type="Control" parent="UI" unique_id=1170368936]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
 metadata/_edit_lock_ = true
 
-[node name="Minimap" type="Panel" parent="UI/Container" unique_id=1902765855]
+[node name="ColorRect" type="TextureRect" parent="UI/HUD" unique_id=1978094222]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bf53h")
+
+[node name="Time" type="Label" parent="UI/HUD" unique_id=335190379]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 35.0
+offset_right = 144.0
+offset_bottom = 171.0
+grow_horizontal = 2
+text = "0:00"
+label_settings = SubResource("LabelSettings_bf53h")
+
+[node name="Minimap" type="Panel" parent="UI/HUD" unique_id=1902765855]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -62,6 +112,65 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_7lihs")
 script = ExtResource("3_fgofq")
+
+[node name="LevelUp" type="Control" parent="UI" unique_id=543991212]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="UI/LevelUp" unique_id=130395700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="Panel" type="Panel" parent="UI/LevelUp" unique_id=1439577763]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.0
+offset_top = -504.0
+offset_right = 504.0
+offset_bottom = 504.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/LevelUp/Panel" unique_id=1864512531]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 124.0
+grow_horizontal = 2
+text = "Level Up!"
+label_settings = SubResource("LabelSettings_71axn")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Upgrades" type="VBoxContainer" parent="UI/LevelUp/Panel" unique_id=420176358]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -854.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=1338058981]
+layout_mode = 2
+text = "Projectile Speed
+Bullets fly faster
+0/3"
 
 [node name="Bounds" type="Control" parent="." unique_id=1409193031]
 material = SubResource("ShaderMaterial_7lihs")
@@ -104,6 +213,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_7lihs")
+metadata/_edit_lock_ = true
 
 [node name="Bullets" type="Node" parent="." unique_id=1412283500]
 
@@ -133,3 +243,5 @@ position = Vector2(999, -168)
 level = 6
 
 [node name="Player" parent="." unique_id=1671592110 instance=ExtResource("1_iukft")]
+
+[connection signal="timeout" from="Timers/Second" to="." method="_on_second_timeout"]
