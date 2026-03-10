@@ -33,6 +33,7 @@ autostart = true
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="." unique_id=2107986662]
 stream = ExtResource("2_5ixxa")
+volume_db = -4.86
 bus = &"SFX"
 
 [node name="Dash2Sound" type="AudioStreamPlayer2D" parent="." unique_id=1201054619]

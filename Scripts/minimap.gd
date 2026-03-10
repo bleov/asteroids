@@ -11,19 +11,18 @@ var origin_vector = Vector2(size.x / 2, size.y / 2);
 var min_pos = Vector2(10, 10);
 var max_pos = size - Vector2(10, 10);
 var time = 0;
+var ticks = 0;
 
 var PLAYER_COLOR = Color.from_rgba8(255, 255, 255, 255);
 var ENEMY_COLOR = Color.from_rgba8(200, 0, 0, 255);
 
 func _physics_process(delta): # enemies and player will only update on physics ticks
 	time += delta;
-	queue_redraw();
+	ticks += 1;
+	if (ticks % 6 == 0):
+		queue_redraw();
 
 func _draw():
-	# Draw player
-	var player_pos = player.position * scale_vector + origin_vector
-	draw_circle(player_pos.clamp(min_pos, max_pos), 5, PLAYER_COLOR, true);
-	
 	# Draw enemies
 	var enemies = Enemies.get_children(false);
 	for enemy in enemies:
@@ -35,3 +34,8 @@ func _draw():
 			color = Color.from_rgba8(200, 0, 0, alpha);
 		var enemy_pos = enemy.position * scale_vector + origin_vector
 		draw_circle(enemy_pos.clamp(min_pos, max_pos), 3, color, true);
+
+	# Draw player
+	var player_pos = player.position * scale_vector + origin_vector
+	draw_circle(player_pos.clamp(min_pos, max_pos), 5, PLAYER_COLOR, true);
+	

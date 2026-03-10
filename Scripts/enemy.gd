@@ -65,7 +65,7 @@ func _physics_process(delta):
 		if (type == Enum.EnemyType.Asteroid && level > 1):
 			for i in 2:
 				var enemy = enemy_template.instantiate();
-				enemy.level = level - 1;
+				enemy.level = max(1, ceil(float(level) / 2.0));
 				enemy.type = type;
 				enemy.position = position;
 				enemy.is_child = true;
@@ -97,6 +97,5 @@ func _on_area_entered(area):
 		normal *= (velocity - area.velocity).dot(normal);
 		var bounce = 2;
 		var giveToPlayer = pow(0.8, level + 2);
-		print(normal.length() * bounce);
 		velocity -= normal * giveToPlayer * bounce;
 		area.velocity += normal * (1 - giveToPlayer) * bounce + normal.normalized() * 10;

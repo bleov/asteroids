@@ -5,6 +5,8 @@ extends Area2D
 @onready var game = get_parent();
 @onready var Bounds = game.get_node("Bounds");
 @onready var Bullets = game.get_node("Bullets");
+@onready var DashSound = $DashSound;
+@onready var Dash2Sound = $Dash2Sound;
 
 @export var area_type: Enum.AreaType = Enum.AreaType.Player;
 @export var move_speed: int = 10;
@@ -24,7 +26,7 @@ func _physics_process(delta):
 	var actual_move_speed = move_speed;
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized();
 	
-	if (Input.is_action_pressed("dodge") && state == Enum.PlayerState.Normal && dodge_cooldown == false):
+	if (Input.is_action_pressed("dodge") && state == Enum.PlayerState.Normal && dodge_cooldown == false && input_vector != Vector2.ZERO):
 		state = Enum.PlayerState.Dodge;
 		dodge_cooldown = true;
 		dodge_velocity = input_vector;
@@ -37,6 +39,10 @@ func _physics_process(delta):
 			state = Enum.PlayerState.Normal)
 		Util.set_timeout(0.35, func():
 			dodge_cooldown = false)
+		if (randf() < 0.5):
+			DashSound.play();
+		else:
+			Dash2Sound.play();
 	
 	if (Input.is_action_pressed("slow")):
 		actual_move_speed = move_speed * 0.65;
