@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var collision = $CollisionShape2D;
 @onready var DrawNode = $Draw;
+@onready var player = $/root/Game/Player;
 @onready var Bounds = $/root/Game/Bounds;
 @onready var Enemies = $/root/Game/Enemies;
 @onready var HitSound = $HitSound;
@@ -62,6 +63,7 @@ func _physics_process(delta):
 	if (health <= 0 && died == false):
 		died = true;
 		kill();
+		player.earn(level * 2);
 		if (type == Enum.EnemyType.Asteroid && level > 1):
 			for i in 2:
 				var enemy = enemy_template.instantiate();

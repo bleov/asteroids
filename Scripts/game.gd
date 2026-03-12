@@ -5,6 +5,7 @@ extends Node2D
 @onready var Bounds = $/root/Game/Bounds;
 @onready var player = $/root/Game/Player;
 @onready var HeartsContainer = $/root/Game/UI/HUD/Hearts;
+@onready var ExpBar = $/root/Game/UI/HUD/ExpBar;
 
 var heart_template = preload("res://Scenes/HeartIndicator.tscn");
 
@@ -65,3 +66,7 @@ func update_health_display():
 			i.get_node("Fill").visible = true;
 		else:
 			i.get_node("Fill").visible = false;
+
+func update_xp_display():
+	ExpBar.max_value = player.max_xp;
+	ExpBar.value = player.xp;

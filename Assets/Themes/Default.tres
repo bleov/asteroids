@@ -18,6 +18,13 @@ border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 border_blend = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxlm8"]
+bg_color = Color(0.9764706, 0.65882355, 0.14509805, 1)
+
 [resource]
+Button/styles/focus = SubResource("StyleBoxFlat_qjduq")
+Button/styles/hover = SubResource("StyleBoxFlat_qjduq")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_qjduq")
 Button/styles/normal = SubResource("StyleBoxFlat_qjduq")
 Panel/styles/panel = SubResource("StyleBoxFlat_mu514")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_qxlm8")
