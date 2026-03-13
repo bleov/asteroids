@@ -147,7 +147,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.3137255)
 
-[node name="Panel" type="Panel" parent="UI/LevelUp" unique_id=1439577763]
+[node name="Modal" type="Panel" parent="UI/LevelUp" unique_id=1439577763]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -161,7 +161,7 @@ offset_bottom = 424.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="UI/LevelUp/Panel" unique_id=1864512531]
+[node name="Title" type="Label" parent="UI/LevelUp/Modal" unique_id=1864512531]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -172,7 +172,7 @@ label_settings = SubResource("LabelSettings_71axn")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Upgrades" type="VBoxContainer" parent="UI/LevelUp/Panel" unique_id=420176358]
+[node name="Upgrades" type="VBoxContainer" parent="UI/LevelUp/Modal" unique_id=420176358]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -185,33 +185,21 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Button" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=1338058981]
+[node name="Choice1" type="Button" parent="UI/LevelUp/Modal/Upgrades" unique_id=1338058981]
 layout_mode = 2
 theme = ExtResource("2_7lihs")
-text = "Projectile Speed
-Bullets fly faster
-0/3"
 
-[node name="Button2" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=1097456054]
+[node name="Choice2" type="Button" parent="UI/LevelUp/Modal/Upgrades" unique_id=1097456054]
 layout_mode = 2
 theme = ExtResource("2_7lihs")
-text = "Projectile Speed
-Bullets fly faster
-0/3"
 
-[node name="Button3" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=1197238464]
+[node name="Choice3" type="Button" parent="UI/LevelUp/Modal/Upgrades" unique_id=1197238464]
 layout_mode = 2
 theme = ExtResource("2_7lihs")
-text = "Projectile Speed
-Bullets fly faster
-0/3"
 
-[node name="Button4" type="Button" parent="UI/LevelUp/Panel/Upgrades" unique_id=2015816439]
+[node name="Choice4" type="Button" parent="UI/LevelUp/Modal/Upgrades" unique_id=2015816439]
 layout_mode = 2
 theme = ExtResource("2_7lihs")
-text = "Projectile Speed
-Bullets fly faster
-0/3"
 
 [node name="LevelUpSound" type="AudioStreamPlayer" parent="UI/LevelUp" unique_id=1103089850]
 stream = ExtResource("7_71axn")

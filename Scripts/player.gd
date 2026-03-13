@@ -3,6 +3,7 @@ extends Area2D
 @onready var game: Node2D = get_parent();
 @onready var Bounds: Control = game.get_node("Bounds");
 @onready var LevelUp: Control = game.get_node("UI/LevelUp");
+@onready var LevelUpChoices: VBoxContainer = LevelUp.get_node("Modal/Upgrades");
 @onready var Weapons: Node2D = $Weapons;
 
 @onready var DashSound = $DashSound;
@@ -18,6 +19,7 @@ extends Area2D
 @export var max_health: int = 5;
 @export var xp: int = 0;
 @export var max_xp: int = 20;
+@export var level: int = 1;
 
 var dodge_cooldown = false;
 var dodge_velocity = Vector2.ZERO;
@@ -92,10 +94,58 @@ func earn(amount: int):
 	if (xp >= max_xp):
 		level_up();
 
+func roll_upgrades():
+	var pool = [];
+	var weapons = Weapons.get_children();
+	for weapon in weapons:
+		for upgrade in weapon.upgrades:
+			if upgrade.level < upgrade.max:
+				pool.append({
+					"owner": weapon,
+					"upgrade": upgrade
+				});
+	var choices = []
+	for i in 4:
+		if (pool.size() == 0): break;
+		var choice = pool[randi_range(0, pool.size() - 1)];
+		choices.append(choice);
+		pool.erase(choice);
+	return choices;
+
+func clear_level_up_connections():
+	for i in range(1, 5):
+		var button: Button = LevelUpChoices.get_node("Choice" + str(i));
+		for connection in button.pressed.get_connections():
+			button.pressed.disconnect(connection.get("callable"));
+
 func level_up():
 	xp = 0;
 	max_xp += 10;
+	level += 1;
 	game.update_xp_display();
 	LevelUpSound.play();
+	clear_level_up_connections();
+	
+	var choices = roll_upgrades();
+	if choices.size() == 0:
+		return;
+	for i in range(1, 5):
+		var button:Button = LevelUpChoices.get_node("Choice" + str(i));
+		if (choices.size() < i):
+			button.visible = false;
+			continue;
+		var choice = choices[i - 1];
+		button.visible = true;
+		button.text = choice.upgrade.name + "\n" + choice.upgrade.description + "\n" + str(choice.upgrade.level) + "/" + str(choice.upgrade.max);
+		var onPressed = null;
+		onPressed = func():
+			print("upgrading " + choice.upgrade.name + " to level " + str(choice.upgrade.level + 1));
+			choice.upgrade.apply.call(choice.upgrade.level + 1);
+			choice.upgrade.level += 1;
+			get_tree().paused = false;
+			LevelUp.visible = false;
+			clear_level_up_connections();
+		button.pressed.connect(onPressed);
+	
 	get_tree().paused = true;
 	LevelUp.visible = true;

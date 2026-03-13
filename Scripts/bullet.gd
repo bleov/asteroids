@@ -4,7 +4,8 @@ extends Area2D
 
 @export var area_type = Enum.AreaType.Projectile;
 @export var velocity = Vector2.ZERO;
-var move_speed = 550;
+@export var move_speed = 550;
+@export var damage = 1;
 
 var removing = false;
 

@@ -92,7 +92,7 @@ func _on_area_entered(area):
 	if (area.area_type == Enum.AreaType.Projectile):
 		area.queue_free();
 		if (!invulnerable):
-			health -= 1;
+			health -= area.damage;
 			if (health > 1):
 				HitSound.play();
 	if (area.area_type == Enum.AreaType.Player):
